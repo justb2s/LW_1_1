@@ -1,6 +1,6 @@
 #pragma once
 
-#include"../include/Constants.h"
+#include"./Constants.h"
 
 namespace MatrixCalculation{
     int ariphmeticAverage(const Matrix &, int &);

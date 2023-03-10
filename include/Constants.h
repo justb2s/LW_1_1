@@ -14,16 +14,13 @@
 #define MAX_MATRIX_ROWS 100
 #define MAX_MATRIX_COLUMS 100
 #define GET_FILE_FOR_MATRIX_TEXT "Enter file for matrix to parse> "
+#define GET_FILE_FOR_OUPUT_TEXT "Enter file for ouput> "
 
 
 struct Matrix{
     std::vector<int> array = {};
     int rowSize = MAX_MATRIX_ROWS; 
 };
-
-namespace MatrixOutput{
-    void outputMatrix(const Matrix &src);
-}
 
 int getFileName(const char *, std::string &);
 

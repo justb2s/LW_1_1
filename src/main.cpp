@@ -2,6 +2,7 @@
 #include"../include/moduleOne.h"
 #include"../include/moduleTwo.h"
 #include"../include/moduleThree.h"
+#include"../include/moduleFour.h"
 
 int main(int argc, char *argv[]){
     Matrix matrix = {};
@@ -21,11 +22,11 @@ int main(int argc, char *argv[]){
         }
     }
 
-    MatrixOutput::outputMatrix(matrix);
+    MatrixOutput::outputMatrixToConsole(matrix);
 
     MatrixSort::sortMatrixByIncreaseOfRowSum(matrix);
 
-    MatrixOutput::outputMatrix(matrix);
+    MatrixOutput::outputMatrixToConsole(matrix);
 
     MatrixCalculation::ariphmeticAverage(matrix, aAvegare);
 
@@ -36,6 +37,10 @@ int main(int argc, char *argv[]){
 
     std::cout << std::endl << "Element count: " 
               << elementCount << std::endl;
+
+    MatrixOutput::outputMatrixToFile(matrix,
+                                     aAvegare,
+                                     elementCount);
 
     std::cout << std::endl;
     system("pause");

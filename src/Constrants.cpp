@@ -1,20 +1,5 @@
 #include"../include/Constants.h"
 
-void MatrixOutput::outputMatrix(const Matrix &src){
-    std::string dst = "";
-    std::cout << std::endl << "Matrix: " << std::endl;
-    int rowJumpCount = 0;
-    for(auto &matrixIterator : src.array){
-        std::cout << matrixIterator;
-        std::cout << ' ';
-        rowJumpCount ++;
-        if(rowJumpCount == src.rowSize){
-            std::cout << std::endl;
-            rowJumpCount = 0;
-        }
-    }
-}
-
 int getFileName(const char *src, std::string &dst){
     std::cout << src;
     std::cin >> dst;
@@ -23,7 +8,7 @@ int getFileName(const char *src, std::string &dst){
 
 int writeLineToFile(const std::string &fileSourcePath, 
                      const std::string &inputString){
-    std::ofstream outFile(fileSourcePath);
+    std::ofstream outFile(fileSourcePath, std::ios::app);
     if(!outFile.is_open()){
         return EXECUTION_ERROR;
     }
