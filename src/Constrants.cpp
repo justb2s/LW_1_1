@@ -1,5 +1,20 @@
 #include"../include/Constants.h"
 
+void MatrixOutput::outputMatrix(const Matrix &src){
+    std::string dst = "";
+    std::cout << std::endl << "Matrix: " << std::endl;
+    int rowJumpCount = 0;
+    for(auto &matrixIterator : src.array){
+        std::cout << matrixIterator;
+        std::cout << ' ';
+        rowJumpCount ++;
+        if(rowJumpCount == src.rowSize){
+            std::cout << std::endl;
+            rowJumpCount = 0;
+        }
+    }
+}
+
 int getFileName(const char *src, std::string &dst){
     std::cout << src;
     std::cin >> dst;
@@ -30,26 +45,29 @@ int readLineFromFile(const std::string &fileSourcePath,
 
 int parseStringMatrix(const std::string &src, Matrix &dst){
     int currentNumber = 0;
-    int decimalOrder = 1;
+    int decimalOrder = 10;
     std::vector<int> rowSize = {};
     int currentSize = 0;
     bool firstDetection = 1;
+    bool isNegativeNumber = 0;
 
     for(auto &stringIterator : src){
         if(stringIterator == NEGATIVE_NUMBER){
-            currentNumber *= -1;
+            isNegativeNumber = 1;
             continue;
         }
         if(isdigit(stringIterator)){
             currentNumber = decimalOrder * currentNumber + int(stringIterator - '0');
-            decimalOrder *= 10;
             continue;
         }
         if(stringIterator == COLUMN_DELIMITER 
            || stringIterator == ROW_DELIMITER){
+            if(isNegativeNumber){
+                currentNumber*=-1;
+            }
             dst.array.push_back(currentNumber);
+            isNegativeNumber = 0;
             currentNumber = 0;
-            decimalOrder = 1;
             currentSize++;
         }
         if(stringIterator == ROW_DELIMITER){
@@ -61,10 +79,12 @@ int parseStringMatrix(const std::string &src, Matrix &dst){
             currentSize = 0;
         }
     }
-    if(decimalOrder > 1){
-        dst.array.push_back(currentNumber);
-        currentSize++;
+    if(isNegativeNumber){
+        currentNumber*=-1;
     }
+    dst.array.push_back(currentNumber);
+    currentSize++;
+
     rowSize.push_back(currentSize);
     for(auto &rowIterator : rowSize){
         if(rowIterator != dst.rowSize){

@@ -21,6 +21,10 @@ struct Matrix{
     int rowSize = MAX_MATRIX_ROWS; 
 };
 
+namespace MatrixOutput{
+    void outputMatrix(const Matrix &src);
+}
+
 int getFileName(const char *, std::string &);
 
 int writeLineToFile(const std::string &, const std::string &);
