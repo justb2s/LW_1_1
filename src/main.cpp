@@ -1,10 +1,13 @@
 #include"../include/Constants.h"
 #include"../include/moduleOne.h"
 #include"../include/moduleTwo.h"
+#include"../include/moduleThree.h"
 
 int main(int argc, char *argv[]){
     Matrix matrix = {};
     Matrix sortedMatrix = {};
+    int aAvegare = 0;
+    int elementCount = 0;
 
     if(MatrixInput::matrixInputFromConsole(argc, argv, matrix)
        == EXECUTION_ERROR){
@@ -24,8 +27,17 @@ int main(int argc, char *argv[]){
 
     MatrixOutput::outputMatrix(matrix);
 
-    
-    
+    MatrixCalculation::ariphmeticAverage(matrix, aAvegare);
+
+    std::cout << std::endl << "Matrix average: " 
+              << aAvegare << std::endl;
+
+    MatrixCalculation::elementCount(matrix, elementCount);
+
+    std::cout << std::endl << "Element count: " 
+              << elementCount << std::endl;
+
+    std::cout << std::endl;
     system("pause");
     return EXECUTION_SUCCEED;
 }
