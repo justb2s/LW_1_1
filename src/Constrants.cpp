@@ -38,11 +38,13 @@ int parseStringMatrix(const std::string &src, Matrix &dst){
 
     for(auto &stringIterator : src){
         if(stringIterator == NEGATIVE_NUMBER){
-            isNegativeNumber = 1;
+            isNegativeNumber = TRUE;
             continue;
         }
         if(isdigit(stringIterator)){
-            currentNumber = decimalOrder * currentNumber + int(stringIterator - '0');
+            currentNumber = decimalOrder 
+                            * currentNumber 
+                            + int(stringIterator - '0');
             continue;
         }
         if(stringIterator == COLUMN_DELIMITER 
@@ -51,8 +53,8 @@ int parseStringMatrix(const std::string &src, Matrix &dst){
                 currentNumber*=-1;
             }
             dst.array.push_back(currentNumber);
-            isNegativeNumber = 0;
-            currentNumber = 0;
+            isNegativeNumber = FALSE;
+            currentNumber = RESET_NUMBER;
             currentSize++;
         }
         if(stringIterator == ROW_DELIMITER){
@@ -60,8 +62,8 @@ int parseStringMatrix(const std::string &src, Matrix &dst){
                 dst.rowSize = currentSize;
             }
             rowSize.push_back(currentSize);
-            firstDetection = 0;
-            currentSize = 0;
+            firstDetection = FALSE;
+            currentSize = RESET_NUMBER;
         }
     }
     if(isNegativeNumber){

@@ -13,8 +13,8 @@ int MatrixSort::
 
         if(currentRowSize == src.rowSize){
             sum.push_back(currentSum);
-            currentSum = 0;
-            currentRowSize = 0;
+            currentSum = RESET_NUMBER;
+            currentRowSize = RESET_NUMBER;
         }
     }
 
@@ -31,7 +31,7 @@ int MatrixSort::
                           src.array[arrayRowIterator 
                                     + src.rowSize]);
             }
-            rowIterator = 0;
+            rowIterator = RESET_NUMBER;
         }
     }
 

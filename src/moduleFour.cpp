@@ -10,7 +10,7 @@ void MatrixOutput::outputMatrixToConsole(const Matrix &src){
         rowJumpCount ++;
         if(rowJumpCount == src.rowSize){
             std::cout << std::endl;
-            rowJumpCount = 0;
+            rowJumpCount = RESET_NUMBER;
         }
     }
 }
@@ -34,7 +34,7 @@ void MatrixOutput::outputMatrixToFile(const Matrix &src,
             outputString.append("\n");
             writeLineToFile(outputFilePath, outputString);
             outputString = "";
-            rowJumpCount = 0;
+            rowJumpCount = RESET_NUMBER;
         }
     }  
 

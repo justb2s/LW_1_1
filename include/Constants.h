@@ -15,6 +15,9 @@
 #define MAX_MATRIX_COLUMS 100
 #define GET_FILE_FOR_MATRIX_TEXT "Enter file for matrix to parse> "
 #define GET_FILE_FOR_OUPUT_TEXT "Enter file for ouput> "
+#define RESET_NUMBER 0
+#define TRUE 1
+#define FALSE 0
 
 
 struct Matrix{
