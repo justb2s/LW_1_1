@@ -8,7 +8,7 @@ int MatrixCalculation::ariphmeticAverage(const Matrix &src,
         dst += vectorIterator;
     }
 
-    dst = dst / src.rowSize;
+    dst = dst / src.array.size();
     return EXECUTION_SUCCEED;
 }
     
